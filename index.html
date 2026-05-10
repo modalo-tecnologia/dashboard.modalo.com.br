@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modalo Dashboard - Entrega & Status</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="background-blob shape-1"></div>
+  <div class="background-blob shape-2"></div>
+
+  <!-- Header -->
+  <header class="glass-panel">
+    <div class="logo">Modalo<span>Insights</span></div>
+    <div class="client-info" id="client-info">Aguardando dados...</div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+    
+    <!-- State: Loading or Progress Bar Check -->
+    <section id="delivery-status" class="glass-panel delivery-panel hidden">
+      <h2 id="delivery-title">Progresso da Entrega</h2>
+      <p id="delivery-subtitle" class="text-muted">Acompanhando os ajustes finais da sua solução focada em dados.</p>
+      
+      <div class="progress-bar-container mt-4">
+        <div class="progress-bar-fill" id="progress-bar"></div>
+      </div>
+      
+      <div class="flex-between mt-2">
+        <span class="text-muted text-sm">Status Atual</span>
+        <span class="highlight-text font-bold" id="progress-text">0%</span>
+      </div>
+    </section>
+
+    <!-- State: Dashboard Data -->
+    <section id="dashboard-content" class="dashboard-grid hidden">
+      <!-- KPI Cards -->
+      <div class="kpi-cards">
+        <div class="kpi-card glass-panel">
+          <h3 class="text-sm text-muted">Total de Operações</h3>
+          <p class="kpi-value" id="kpi-total">0</p>
+        </div>
+        <div class="kpi-card glass-panel">
+          <h3 class="text-sm text-muted">Negócios Potenciais</h3>
+          <p class="kpi-value highlight-text" id="kpi-potenciais">0</p>
+        </div>
+        <div class="kpi-card glass-panel">
+          <h3 class="text-sm text-muted">Taxa de Conversão</h3>
+          <p class="kpi-value text-accent" id="kpi-taxa">0%</p>
+        </div>
+      </div>
+
+      <!-- Charts Area -->
+      <div class="charts-area mt-4">
+        <div class="chart-container glass-panel">
+          <h3 class="mb-3">Distribuição de Status</h3>
+          <canvas id="statusChart"></canvas>
+        </div>
+        <div class="chart-container glass-panel">
+          <h3 class="mb-3">Categorias de Operações</h3>
+          <canvas id="categoryChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Recent Logs Table -->
+      <div class="table-container glass-panel mt-4">
+         <h3 class="mb-3">Atividades Recentes</h3>
+         <table class="data-table">
+            <thead>
+               <tr>
+                  <th>Data/Hora</th>
+                  <th>Status de Negócio</th>
+                  <th>Dados (Resumo)</th>
+               </tr>
+            </thead>
+            <tbody id="table-body">
+               <!-- Insert rows dynamically -->
+            </tbody>
+         </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
