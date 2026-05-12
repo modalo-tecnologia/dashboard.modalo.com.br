@@ -45,11 +45,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   const isPast = deliveryDate < today;
   
   // Try to fetch data
-  // Try to fetch data
   try {
-    const response = await fetch('https://api.modalo.com.br/api/dashboard', {
+    // Configurações do Gateway Cloudflare (Worker)
+    const WORKER_URL = 'https://SEU_WORKER.workers.dev/api/dashboard';
+
+    const response = await fetch(WORKER_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({ token })
     });
     const result = await response.json();
